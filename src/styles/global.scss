@@ -1,0 +1,11 @@
+body {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space);
+  min-height: 100vh;
+  width: 100%;
+  color: var(--Text-Primary);
+  padding: 96px 240px 72px;
+  font-family: var(--font);
+  background-color: var(--BG-Primary);
+}
