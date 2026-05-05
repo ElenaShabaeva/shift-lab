@@ -1,17 +1,24 @@
 :root {
   --BG-Primary: #ffffff;
-  --BG-Disable: #F3F4F6;
+  --BG-Tertiary: #f9fafb;
+  --BG-Disable: #f3f4f6;
+  --BG-Brand: #1975ff;
+  --BG-Hover-Primary: #0052cc;
+  --BG-Brand-ExtraLight: #cce0ff;
+
   --Text-Primary: #141c24;
   --Text-Secondary: #344051;
   --Text-Tertiary: #637083;
   --Text-Quartenery: #97a1af;
   --Text-Invert: #ffffff;
-  --Text-Error: #F64C4C;
-  --BG-Brand: #1975ff;
+  --Text-Error: #f64c4c;
+
   --Border-Light: #ced2da;
-  --Border-Medium: #97A1AF;
-  --Indicator-Focused: #4C94FF;
-  --Indicator-Error: #F64C4C;
+  --Border-Medium: #97a1af;
+  
+  --Indicator-Focused: #4c94ff;
+  --Indicator-Focused-Alternativ: #cce0ff;
+  --Indicator-Error: #f64c4c;
 
   --font: "Inter", sans-serif;
 
