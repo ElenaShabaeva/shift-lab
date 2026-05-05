@@ -1,0 +1,14 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+
+  &:has(.error) input {
+    border-color: var(--Indicator-Error);
+    border-width: 2px;
+  }
+}
+
+.error {
+  color: var(--Text-Error);
+}
