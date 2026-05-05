@@ -7,7 +7,7 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
 };
 
-const PrimaryButton = ({
+const Button = ({
   className,
   variant = "primary",
   children,
@@ -24,4 +24,4 @@ const PrimaryButton = ({
   );
 };
 
-export default PrimaryButton;
+export default Button;
