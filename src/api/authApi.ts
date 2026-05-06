@@ -1,9 +1,14 @@
 const API_URL = "https://juniorsbootcamp.ru/api";
 
+type GetCodeResponse = {
+  success: boolean,
+  reason: string,
+  retryDelay: number
+}
+
 export const authApi = {
-  getCode: async (phone: string): Promise<{ success: boolean }> => {
+  getCode: async (phone: string): Promise<GetCodeResponse> => {
     const clearPhone = phone.replace(/\D/g, "");
-    console.log(JSON.stringify({ phone: clearPhone }));
     
     const response = await fetch(`${API_URL}/auth/otp`, {
       method: "POST",
