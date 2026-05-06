@@ -1,0 +1,12 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--space);
+    max-width: 464px;
+    width: 100%;
+}
+
+.formButton {
+    max-width: 328px;
+    margin-block: 16px;
+}
