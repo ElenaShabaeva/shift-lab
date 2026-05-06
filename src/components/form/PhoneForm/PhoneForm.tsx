@@ -1,9 +1,10 @@
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, type SubmitHandler } from "react-hook-form";
 import { IMaskInput } from "react-imask";
 import Button from "@/shared/Button";
 import Field from "@/shared/Field";
 import styles from "@/components/form/Form.module.scss";
 import inputStyles from "@/shared/Input/Input.module.scss";
+import { useGetCode } from "@/hooks/useAuth";
 
 export type PhoneData = {
   phone: string;
@@ -12,6 +13,7 @@ export type PhoneData = {
 const PhoneForm = () => {
   const {
     control,
+    handleSubmit,
     formState: { errors },
   } = useForm<PhoneData>({
     mode: "onChange",
@@ -20,13 +22,18 @@ const PhoneForm = () => {
     },
   });
 
+  const getCodeMutation = useGetCode();
+  const onSubmit: SubmitHandler<PhoneData> = (data) => {
+    getCodeMutation.mutate(data.phone);
+  };
+
   const getPhoneError = () => {
     if (errors.phone?.message) return errors.phone.message;
     return undefined;
   };
 
   return (
-    <form className={`${styles.form}`}>
+    <form onSubmit={handleSubmit(onSubmit)} className={`${styles.form}`}>
       <h1 className="h2">Вход</h1>
       <p className="p-16">
         Введите номер телефона для входа <br /> в личный кабинет
