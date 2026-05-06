@@ -23,18 +23,13 @@
 
   &:focus-visible {
     outline: 2px solid var(--Indicator-Focused);
-    
-    &::placeholder{
-        color: transparent;
+
+    &::placeholder {
+      color: transparent;
     }
   }
 
   &[disabled] {
     background-color: var(--BG-Disable);
-  }
-
-  &--error{
-    border-color: var(--Indicator-Error);
-    border-width: 2px;
   }
 }
