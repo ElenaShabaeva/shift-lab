@@ -1,7 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
-import { data, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { authApi } from "@/api/authApi";
 import { setIsResend, setPhone, setTimerSeconds } from "@/store/auth";
+import { setUserID, setUserPhone } from "@/store/user";
 
 export const useGetCode = () => {
   const navigate = useNavigate();
@@ -23,11 +24,16 @@ export const useGetCode = () => {
 };
 
 export const useValidCode = () => {
+  const navigate = useNavigate();
+
   return useMutation({
     mutationFn: ({ phone, code }: { phone: string; code: string }) => 
       authApi.validCode(phone, code),
     onSuccess: (data) => {
-      alert("Вы ввели правильный код");
+      localStorage.removeItem('auth-storage')
+      setUserID(data.user._id);
+      setUserPhone(data.user.phone)
+      navigate(`/user/${data.user._id}`)
     },
     onError: (error: Error) => {
       alert(`${error.message}`);
