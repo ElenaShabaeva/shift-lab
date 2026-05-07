@@ -5,7 +5,7 @@ import { useValidCode } from "@/hooks/useAuth";
 import Button from "@/shared/Button";
 import Field from "@/shared/Field";
 import Input from "@/shared/Input";
-import Timer from "../Timer";
+import Timer from "../../Timer";
 import styles from "@/components/form/Form.module.scss";
 import inputStyles from "@/shared/Input/Input.module.scss";
 
