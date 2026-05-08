@@ -1,4 +1,4 @@
-import PhoneForm from "@/components/form/PhoneForm";
+import PhoneForm from "@/components/Form/PhoneForm";
 
 const PhoneFormPage = () => {
   return <PhoneForm />;

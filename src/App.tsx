@@ -1,5 +1,5 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import PhoneFormPage from "./pages/PhoneFormPage";
 import CodeFormPage from "./pages/CodeFormPage";
 import UserProfilePage from "./pages/UserProfile";

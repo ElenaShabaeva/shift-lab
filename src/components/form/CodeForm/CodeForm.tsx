@@ -1,13 +1,13 @@
 import { Controller, useForm, type SubmitHandler } from "react-hook-form";
 import { IMaskInput } from "react-imask";
+import { useConfirmCode } from "@/hooks/useConfirmCode";
 import { usePhone } from "@/store/auth";
-import { useValidCode } from "@/hooks/useAuth";
-import Button from "@/shared/Button";
-import Field from "@/shared/Field";
-import Input from "@/shared/Input";
-import Timer from "../../Timer";
+import Field from "@/components/ui/Field";
+import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
+import Timer from "@/components/Timer";
 import styles from "@/components/form/Form.module.scss";
-import inputStyles from "@/shared/Input/Input.module.scss";
+import inputStyles from "@/components/ui/Input/Input.module.scss";
 
 export type CodeData = {
   code: string;
@@ -27,7 +27,7 @@ const CodeForm = () => {
     },
   });
 
-  const validCodeMutation = useValidCode();
+  const validCodeMutation = useConfirmCode();
   const onSubmit: SubmitHandler<CodeData> = (data) => {
     validCodeMutation.mutate({ phone: phone, code: data.code });
   };

@@ -1,33 +1,32 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+type User = {
+  id: string;
+  phone: string;
+};
+
 type UserStore = {
-  userID: string;
-  userPhone: string;
-  setUserID: (id: string) => void;
-  setUserPhone: (phone: string) => void;
+  user: User | null;
+  setUser: (user: User) => void;
+  logout: () => void;
 };
 
 export const useUserStore = create<UserStore>()(
   persist(
     (set) => ({
-      userID: '',
-      userPhone: "",
-      setUserID: (userID) => set({userID}),
-      setUserPhone: (userPhone) => set({ userPhone }),
+      user: null,
+      setUser: (user) => set({ user }),
+      logout: () => {
+        useUserStore.persist.clearStorage();
+      },
     }),
     {
       name: "user-storage",
-      partialize: (state) => ({
-        userID: state.userID,
-        userPhone: state.userPhone,
-      }),
     },
   ),
 );
 
-export const useUserID = () => useUserStore((state) => state.userID);
-export const setUserID = (userID: string) => useUserStore.getState().setUserID(userID);
-export const useUserPhone = () => useUserStore((state) => state.userPhone);
-export const setUserPhone = (phone: string) =>
-  useUserStore.getState().setUserPhone(phone);
+export const useUser = () => useUserStore((state) => state.user);
+export const setUser = (user: User) => useUserStore.getState().setUser(user);
+export const logout = () => useUserStore.getState().logout();

@@ -1,4 +1,4 @@
-import CodeForm from "@/components/form/CodeForm";
+import CodeForm from "@/components/Form/CodeForm";
 
 const CodeFormPage = () => {
   return <CodeForm />;

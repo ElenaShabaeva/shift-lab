@@ -1,10 +1,10 @@
 import { Controller, useForm, type SubmitHandler } from "react-hook-form";
 import { IMaskInput } from "react-imask";
-import Button from "@/shared/Button";
-import Field from "@/shared/Field";
+import { useRequestCode } from "@/hooks/useRequestCode";
+import Field from "@/components/ui/Field";
+import Button from "@/components/ui/Button";
 import styles from "@/components/form/Form.module.scss";
-import inputStyles from "@/shared/Input/Input.module.scss";
-import { useGetCode } from "@/hooks/useAuth";
+import inputStyles from "@/components/ui/Input/Input.module.scss";
 
 export type PhoneData = {
   phone: string;
@@ -22,7 +22,7 @@ const PhoneForm = () => {
     },
   });
 
-  const getCodeMutation = useGetCode();
+  const getCodeMutation = useRequestCode();
   const onSubmit: SubmitHandler<PhoneData> = (data) => {
     getCodeMutation.mutate(data.phone);
   };

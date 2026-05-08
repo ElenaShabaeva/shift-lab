@@ -1,28 +1,31 @@
-import Field from "@/shared/Field";
-import Input from "@/shared/Input";
-import styles from "@/components/form/Form.module.scss";
-import Button from "@/shared/Button";
 import { useNavigate } from "react-router-dom";
-import { useUserID, useUserPhone } from "@/store/user";
+import { logout, useUser } from "@/store/user";
+import Field from "@/components/ui/Field";
+import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
+import styles from "@/components/form/Form.module.scss";
 
 const UserForm = () => {
-  const navigate = useNavigate()
-  const userPhone = useUserPhone();
-  const userID = useUserID();
+  const navigate = useNavigate();
+  const user = useUser();
 
   const handleClick = () => {
-    navigate('/')
-    localStorage.removeItem('user-storage')
-  }
+    navigate("/");
+    logout()
+  };
 
   return (
     <form className={`${styles.form}`}>
       <h1 className="h2">Профиль</h1>
-      <p className="p-16">Пользователь: {userID}</p>
+      <p className="p-16">Пользователь: {user.id}</p>
       <Field id="phone-field" label="Телефон">
-        <Input type="tel" id="phone-field" defaultValue={userPhone} disabled />
+        <Input type="tel" id="phone-field" defaultValue={user.phone} disabled />
       </Field>
-      <Button type="button" className={`${styles.formButton}`} onClick={handleClick}>
+      <Button
+        type="button"
+        className={`${styles.formButton}`}
+        onClick={handleClick}
+      >
         Выйти
       </Button>
     </form>
