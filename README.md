@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+#  Форма авторизации с вводом номера телефона и отп.кода
+Сайт для авторизации пользователей через SMS-код. Реализована двухэтапная авторизация с таймером повторной отправки кода.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Функционал
+1. Ввод номера телефона
+- Для ввода используется маска ввода (+7 000 000 00 00) и валидация
+- Отправка запроса на получение SMS-кода (посмотреть код 'URL_адрес-backend/api/otps')
 
-Currently, two official plugins are available:
+2. Ввод SMS-кода
+- Для ввода кода используется маска ввода (000000) и валидация
+- Есть таймер обратного отсчета (значение приходит с сервера)
+- После истечения таймера есть возможность повторной отправки кода
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+3. Профиль пользователя
+- Отображение id и номера телефона
+- Есть кнопка выхода из аккаунта
 
-## React Compiler
+## Технологии
+| Технология | Версия |
+|------------|--------|
+| React | 19.2.5 |
+| TypeScript | 6.0.2 |
+| Vite | 8.0.10 |
+| Zustand | 5.0.12 |
+| TanStack Query | 5.100.9 |
+| React Hook Form | 7.75.0 |
+| React Router DOM | 7.15.0 |
+| React IMask | 7.6.1 |
+| SCSS | 1.99.0 |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Установка и запуск
+Перед началом работы убедитесь, что у  установлены:
+- Node.js версии 18 или выше
+- npm (устанавливается вместе с Node.js) или yarn / pnpm
 
-## Expanding the ESLint configuration
+1. Установка зависимостей
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Склонируйте репозиторий и установите все необходимые пакеты
+```bash
+git clone https://github.com/ElenaShabaeva/shift-lab.git
+```
+Перейдите в папку проекта
+```bash
+cd shift-lab
+```
+Установите зависимости
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Настройка окружения
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+В корне проекта (на уровне с папкой src) создайте файл .env и добавьте переменную для запросов на backend:
+```bash
+VITE_API_URL='URL_адрес-backend'
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+3. Запуск проекта
+```bash
+npm run dev
 ```
